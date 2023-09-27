@@ -37,7 +37,7 @@ func Login(c *gin.Context) {
 		return
 	}
 
-	Db.Where("email = ?", user.Correo).First(&dbuser)
+	Db.Where("correo = ?", user.Correo).First(&dbuser)
 	if !helpers.ComparePasswords(user.Password, dbuser.Password) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Wrong Credentials"})
 		return
@@ -64,7 +64,7 @@ func Login(c *gin.Context) {
 func GetUserById(c *gin.Context) {
 	userid := c.Param("id")
 	var dbuser models.Userdata
-	Db.Model(models.Userdata{}).Where("id = ?", userid).Find(&dbuser)
+	Db.Model(models.Userdata{}).Where("id = ?", userid).Preload("Road_logs").Find(&dbuser)
 	c.JSON(http.StatusOK, gin.H{"data": dbuser})
 }
 

@@ -11,5 +11,5 @@ type Userdata struct {
 	Fecha_nacimiento    string      `json:"fecha_nacimiento" validate:"required"`
 	Numero_telefono     string      `json:"numero_telefono" validate:"required"`
 	Contacto_emergencia string      `json:"contacto_emergencia" validate:"required"`
-	Road_logs           []Road_logs `json:"road_logs"`
+	Road_logs           []Road_logs `json:"road_logs" gorm:"foreignKey:UserID"`
 }

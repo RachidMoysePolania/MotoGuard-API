@@ -28,7 +28,7 @@ func AuthMiddleware(c *gin.Context) {
 		}
 
 		var user models.Userdata
-		controllers.Db.Where("email = ?", claims["user"]).First(&user)
+		controllers.Db.Where("correo = ?", claims["user"]).First(&user)
 
 		c.Set("user", user)
 		c.Next()

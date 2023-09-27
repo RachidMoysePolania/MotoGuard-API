@@ -7,5 +7,5 @@ import (
 )
 
 func HealtCheck(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{"mensaje": "ping"})
+	c.JSON(http.StatusOK, gin.H{"mensaje": "pong"})
 }
